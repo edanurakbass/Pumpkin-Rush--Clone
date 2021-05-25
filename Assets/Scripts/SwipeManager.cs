@@ -52,8 +52,8 @@ public class SwipeManager : MonoBehaviour
                     if (aboutToCollide && hit.collider.tag == "Push")
                     {
                        
-                        hit.transform.gameObject.GetComponent<PushableCube>().YaniDoluMu(-hit.transform.right);
-                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Ilerle(-hit.transform.right))
+                        hit.transform.gameObject.GetComponent<PushableCube>().IsNear(-hit.transform.right);
+                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Move(-hit.transform.right))
                             return;
                     }
                     else if (aboutToCollide && hit.collider.CompareTag("Wall"))
@@ -74,8 +74,8 @@ public class SwipeManager : MonoBehaviour
                     if (aboutToCollide && hit.collider.tag == "Push")
                     {
 
-                        hit.transform.gameObject.GetComponent<PushableCube>().YaniDoluMu(hit.transform.right);
-                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Ilerle(hit.transform.right))
+                        hit.transform.gameObject.GetComponent<PushableCube>().IsNear(hit.transform.right);
+                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Move(hit.transform.right))
                             return;
 
                     }
@@ -102,8 +102,8 @@ public class SwipeManager : MonoBehaviour
                     if (aboutToCollide && hit.collider.tag == "Push")
                     {
           
-                        hit.transform.gameObject.GetComponent<PushableCube>().YaniDoluMu(-hit.transform.forward);
-                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Ilerle(-hit.transform.forward))
+                        hit.transform.gameObject.GetComponent<PushableCube>().IsNear(-hit.transform.forward);
+                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Move(-hit.transform.forward))
                             return;
                     }
                     else if (aboutToCollide && hit.collider.CompareTag("Wall"))
@@ -127,12 +127,8 @@ public class SwipeManager : MonoBehaviour
                     if (aboutToCollide && hit.collider.tag == "Push")
                     {
                      
-                        if (hit.transform.gameObject.GetComponent<PushableCube>().DuvarVarMi(hit.transform.forward))
-                        {
-                            return;
-                        }
-                        hit.transform.gameObject.GetComponent<PushableCube>().YaniDoluMu(hit.transform.forward);
-                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Ilerle(hit.transform.forward))
+                        hit.transform.gameObject.GetComponent<PushableCube>().IsNear(hit.transform.forward);
+                        if (!hit.transform.gameObject.GetComponent<PushableCube>().Move(hit.transform.forward))
                             return;
                     }
                     else if(aboutToCollide && hit.collider.CompareTag("Wall"))

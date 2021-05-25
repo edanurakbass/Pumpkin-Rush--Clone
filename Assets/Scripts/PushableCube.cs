@@ -12,7 +12,7 @@ public class PushableCube : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public bool Ilerle(Vector3 direction)
+    public bool Move(Vector3 direction)
     {
         if (!duvar)
         {
@@ -22,17 +22,17 @@ public class PushableCube : MonoBehaviour
         return false;
     }
 
-    public void YaniDoluMu(Vector3 direction)
+    public void IsNear(Vector3 direction)
     {
         RaycastHit hit;
 
         if (rb.SweepTest(direction, out hit, 0.3f))
         {
-            DuvarVarMi(direction);
+            IsWall(direction);
             if (hit.collider.tag == "Push")
             {
                 Debug.Log(hit.collider.gameObject);
-                hit.collider.GetComponent<PushableCube>().YaniDoluMu(direction);
+                hit.collider.GetComponent<PushableCube>().IsNear(direction);
 
                  if (!duvar)
                  {
@@ -43,7 +43,7 @@ public class PushableCube : MonoBehaviour
         }
     }
 
-    public bool DuvarVarMi(Vector3 direction)
+    public bool IsWall(Vector3 direction)
     {
         RaycastHit hit;
 
